@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/main_page.dart';
+import 'package:myapp/resources/colors.dart';
+import 'package:myapp/resources/string.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: appName,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: primaryColor,
+          secondary: secondaryColor,
         ),
+        useMaterial3: true,
+        fontFamily: 'Poppins',
       ),
+      home: const MainPage(),
     );
   }
 }
