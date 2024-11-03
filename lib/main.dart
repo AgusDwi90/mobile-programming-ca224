@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/main_page.dart';
 import 'package:myapp/resources/colors.dart';
-import 'package:myapp/resources/string.dart';
+import 'package:myapp/resources/strings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
