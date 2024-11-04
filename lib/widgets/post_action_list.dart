@@ -11,15 +11,15 @@ class PostActionList extends StatelessWidget {
       children: [
         PostAction(
           asset: 'assets/icons/fi-br-heart.svg',
-          label: '1.2k',
+          label: '1.4k',
         ),
         PostAction(
           asset: 'assets/icons/fi-br-comment.svg',
-          label: '254',
+          label: '233',
         ),
         PostAction(
           asset: 'assets/icons/fi-br-bookmark.svg',
-          label: '55',
+          label: '122',
         ),
       ],
     );

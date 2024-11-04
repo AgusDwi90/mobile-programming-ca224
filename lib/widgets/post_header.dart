@@ -9,23 +9,20 @@ class PostHeader extends StatelessWidget {
       leading: const CircleAvatar(
         backgroundImage: NetworkImage('https://i.pravatar.cc/150'),
       ),
-      title: const Text(
-        'John Doe',
+      title: const Text( 'Ghost View',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.white70,
         ),
       ),
-      subtitle: const Text(
-        'Denpasar, Bali',
+      subtitle: const Text( 'Denpasar, Bali',
         style: TextStyle(
           color: Colors.white60,
         ),
       ),
       trailing: IconButton(
         onPressed: () {},
-        icon: const Icon(
-          Icons.more_vert,
+        icon: const Icon( Icons.more_vert,
           color: Colors.white70,
         ),
       ),

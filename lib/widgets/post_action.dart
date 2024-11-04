@@ -15,17 +15,13 @@ class PostAction extends StatelessWidget {
     return Row(
       children: [
         IconButton(
-          icon: SvgPicture.asset(
-            asset,
-            colorFilter: const ColorFilter.mode(
-              Colors.white70,
-              BlendMode.srcIn,
+          icon: SvgPicture.asset(asset,
+            colorFilter: const ColorFilter.mode(Colors.white70, BlendMode.srcIn,
             ),
           ),
           onPressed: () {},
         ),
-        Text(
-          label,
+        Text(label,
           style: const TextStyle(
             color: Colors.white70,
           ),

@@ -42,8 +42,7 @@ class PostItem extends StatelessWidget {
                     largeSize,
                     mediumSize,
                   ),
-                  child: Text(
-                    'This is my amazing moment...',
+                  child: Text( 'This is my amazing moment...',
                     style: TextStyle(
                       color: Colors.white70,
                     ),

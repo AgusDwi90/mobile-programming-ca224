@@ -34,8 +34,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          'assets/images/moments_text.png',
+        title: Image.asset('assets/images/moments_text.png',
           height: 30,
         ),
         centerTitle: true,
