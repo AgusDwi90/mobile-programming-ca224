@@ -16,7 +16,7 @@ class SearchPage extends StatelessWidget {
           height: 60,
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(52, 228, 188, 127),
+            color: const Color.fromARGB(28, 228, 188, 127),
             borderRadius: BorderRadius.circular(18.0),
           ),
           child: const Row(
