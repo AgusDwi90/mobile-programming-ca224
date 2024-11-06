@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/resources/colors.dart';
 import 'package:myapp/widgets/post_item_search.dart';
 
 class SearchPage extends StatelessWidget {
@@ -12,31 +13,31 @@ class SearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Container(
-          height: 40,
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          height: 60,
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8.0),
+            color: const Color.fromARGB(52, 228, 188, 127),
+            borderRadius: BorderRadius.circular(18.0),
           ),
           child: const Row(
             children: [
-              Icon(Icons.search, color: Colors.grey),
-              SizedBox(width: 8),
+              Icon(Icons.search, color: primaryColor),
+              SizedBox(width: 10),
               Text('Cari moment....',
-                style: TextStyle(color: Colors.grey, fontSize: 16),
+                style: TextStyle(color: primaryColor, fontSize: 16),
               ),
             ],
           ),
         ),
         backgroundColor: Colors.transparent,
-        elevation: 5,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.5),
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // Three columns for grid layout
-            crossAxisSpacing: 1,
+            crossAxisSpacing: 0,
             mainAxisSpacing: 0,
             childAspectRatio: 1, // Ensures square aspect for images
           ),
