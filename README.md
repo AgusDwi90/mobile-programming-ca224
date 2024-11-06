@@ -9,5 +9,6 @@ Kls  : CA224
 + Menampilkan Gambar dalam tampilan Grid
 
 ## Gambar
-![Tugas Pertemuan05 re](https://github.com/user-attachments/assets/8bc03245-46f1-41f6-8ebd-74a15ea19a7d)
+![Tugas Pertemuan05](https://github.com/user-attachments/assets/0b53ae5c-4217-465c-b495-ad7dcbba5ffd)
+
 
