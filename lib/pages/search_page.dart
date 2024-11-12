@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/moment.dart';
 import 'package:myapp/resources/colors.dart';
 import 'package:myapp/widgets/post_item_search.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+  const SearchPage({super.key, required this.moments});
+  final List<Moment> moments;
+
 
   @override
   Widget build(BuildContext context) {
     // Generate a list of PostItems (replace with real data as needed)
-    final listPostItems = List.generate(12, (index) => const PostItem());
+    final listPostItems = moments.map(
+      (momentItem) => PostItem(
+        moment: momentItem,
+      ),
+    ).toList();
 
     return Scaffold(
       appBar: AppBar(

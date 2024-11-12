@@ -1,25 +1,34 @@
+
 import 'package:flutter/material.dart';
 
 import 'post_action.dart';
 
 class PostActionList extends StatelessWidget {
-  const PostActionList({super.key});
+  const PostActionList({
+    super.key,
+    this.likeCount = 0,
+    this.commentCount = 0,
+    this.bookmarkCount = 0,
+  });
+  final int likeCount;
+  final int commentCount;
+  final int bookmarkCount;
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
         PostAction(
           asset: 'assets/icons/fi-br-heart.svg',
-          label: '1.4k',
+          label: likeCount.toString(),
         ),
         PostAction(
           asset: 'assets/icons/fi-br-comment.svg',
-          label: '233',
+          label: commentCount.toString(),
         ),
         PostAction(
           asset: 'assets/icons/fi-br-bookmark.svg',
-          label: '122',
+          label: bookmarkCount.toString(),
         ),
       ],
     );
