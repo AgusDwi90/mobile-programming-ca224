@@ -34,13 +34,13 @@ class CreateCommentPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             // Comment Text Field
-            TextField(
+            const TextField(
               maxLines: 4,
               decoration: InputDecoration(
                 labelText: "Comment",
-                prefixIcon: const Icon(Icons.insert_drive_file),
+                prefixIcon: Icon(Icons.insert_drive_file),
                 hintText: "Comment description",
-                border: const OutlineInputBorder(),
+                border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 24),
@@ -76,7 +76,7 @@ class CreateCommentPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
-                      side: BorderSide(color: Colors.brown),
+                      side: const BorderSide(color: Colors.brown),
                     ),
                     child: const Text(
                       "Cancel",
