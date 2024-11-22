@@ -1,4 +1,4 @@
-# Tugas Latihan Pertemuan09
+# Tugas Latihan Pertemuan06
 Membuat sebuah layout untuk halaman pencarian momen yang bisa di akses pada tab ke-2.
 Nama : I Made Agus Dwi Maha Putra
 NIM  : 240040040
