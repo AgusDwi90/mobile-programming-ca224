@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_programming_ca224/models/moment.dart';
 
 class PostHeader extends StatelessWidget {
   const PostHeader({
     super.key,
+    required this.momentItem,
+    required this.onUpdate,
+    required this.onDelete,
     required this.creator,
-    required this.location,
+    required this.location, 
   });
+  final Moment momentItem;
+  final Function(Moment) onUpdate;
+  final Function(Moment) onDelete;
   final String creator;
   final String location;
 
@@ -28,11 +35,29 @@ class PostHeader extends StatelessWidget {
           color: Colors.white60,
         ),
       ),
-      trailing: IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          Icons.more_vert,
-          color: Colors.white70,
+      trailing: PopupMenuButton(
+        itemBuilder: (context) {
+          return [
+            const PopupMenuItem(
+              value: 'Update',
+              child: Text('Update'),
+            ),
+            const PopupMenuItem(
+              value: 'Delete',
+              child: Text('Delete'),
+            ),
+          ];
+        },
+        onSelected: (value) {
+          if (value == 'Update') {
+            onUpdate(momentItem);
+          } else if (value == 'Delete') {
+            onDelete(momentItem);
+          }
+        },
+        child: const Icon(
+          Icons.more_vert_rounded,
+          color: Colors.white,
         ),
       ),
     );

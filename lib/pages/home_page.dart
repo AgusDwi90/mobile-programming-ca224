@@ -3,8 +3,15 @@ import 'package:mobile_programming_ca224/models/moment.dart';
 import 'package:mobile_programming_ca224/widgets/post_item.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key, required this.moments});
+  const HomePage({
+    super.key,
+    required this.moments,
+    required this.onUpdate,
+    required this.onDelete,
+    });
   final List<Moment> moments;
+  final Function(Moment) onUpdate;
+  final Function(Moment) onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +19,8 @@ class HomePage extends StatelessWidget {
         .map(
           (momentItem) => PostItem(
             moment: momentItem,
+            onUpdate: onUpdate,
+            onDelete: onDelete,
           ),
         )
         .toList();
