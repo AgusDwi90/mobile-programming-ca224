@@ -9,7 +9,6 @@ class CommentEntryPage extends StatefulWidget {
   final String? commentId;
 
   @override
-  // ignore: library_private_types_in_public_api
   _CommentEntryPageState createState() => _CommentEntryPageState();
 }
 
@@ -20,8 +19,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
   void _saveComment() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // Simpan data ke server/database atau state management.
-      Navigator.of(context).pop();
+      Navigator.of(context).pop(_dataComment);
     }
   }
 
@@ -29,8 +27,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(widget.commentId == null ? 'Create Comment' : 'Edit Comment'),
+        title: Text(widget.commentId == null ? 'Add Comment' : 'Edit Comment'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(largeSize),
@@ -43,10 +40,8 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                 const Text('Creator'),
                 TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(0.0),
-                    ),
-                    hintText: 'Moment creator',
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter creator name',
                     prefixIcon: const Icon(Icons.person),
                   ),
                   validator: (value) {
@@ -55,20 +50,14 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                     }
                     return null;
                   },
-                  onSaved: (newValue) {
-                    if (newValue != null) {
-                      _dataComment['creator'] = newValue;
-                    }
-                  },
+                  onSaved: (newValue) => _dataComment['creator'] = newValue!,
                 ),
                 const SizedBox(height: mediumSize),
                 const Text('Comment'),
                 TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(0.0),
-                    ),
-                    hintText: 'Enter comment',
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter your comment',
                     prefixIcon: const Icon(Icons.comment),
                   ),
                   maxLines: 5,
@@ -78,11 +67,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                     }
                     return null;
                   },
-                  onSaved: (newValue) {
-                    if (newValue != null) {
-                      _dataComment['content'] = newValue;
-                    }
-                  },
+                  onSaved: (newValue) => _dataComment['content'] = newValue!,
                 ),
                 const SizedBox(height: largeSize),
                 ElevatedButton(

@@ -10,20 +10,25 @@ class AppRouter {
     switch (settings.name) {
       case MainPage.routeName:
         return MaterialPageRoute(builder: (_) => const MainPage());
+
       case MomentPage.routeName:
         return MaterialPageRoute(builder: (_) => const MomentPage());
+
       case MomentEntryPage.routeName:
         final momentId = settings.arguments as String?;
         return MaterialPageRoute(
             builder: (_) => MomentEntryPage(momentId: momentId));
+
       case CommentPage.routeName:
-        final momentId = settings.arguments as String?;
+        final momentId = settings.arguments as String;
         return MaterialPageRoute(
-            builder: (_) => CommentPage(momentId: momentId!));
-      case CommentEntryPage.routeName: // Pastikan ini benar
+            builder: (_) => CommentPage(momentId: momentId));
+
+      case CommentEntryPage.routeName:
         final commentId = settings.arguments as String?;
         return MaterialPageRoute(
             builder: (_) => CommentEntryPage(commentId: commentId));
+
       default:
         return MaterialPageRoute(builder: (_) => const MainPage());
     }
