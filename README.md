@@ -1,16 +1,14 @@
-# myapp
+# CA224 240040040 I Made Agus Dwi Maha Putra
 
-A new Flutter project.
+## Tugas Pertemuan 09
+- Menambahkan implementasi kontrak dari repository untuk Comment. 
+- Integrasikan repository pada BLoC untuk modul comment untuk mengelola data komentar untuk setiap moment.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Fitur
+- Menambahkan Komentar
+- Mengedit Komentar
+- Delete Komentar
+![Screenshot 2024-12-18 171052](https://github.com/user-attachments/assets/2596e263-82b4-4d3e-8bae-5b9c2ab9f4c4)
+![Screenshot 2024-12-18 171001](https://github.com/user-attachments/assets/4a558d33-7fdb-4a47-b329-d6c8c6144e51)
+![Screenshot 2024-12-18 170245](https://github.com/user-attachments/assets/6f67f7a8-332e-4ef0-bf51-44de187b66c8)
+- untuk edit dan delete masih belum dilengkapi popup konfirmasi
