@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/resources/dimensions.dart';
 import '../../../core/resources/colors.dart';
 
 class CommentEntryPage extends StatefulWidget {
   static const routeName = '/comment/entry';
+
   const CommentEntryPage({super.key, this.commentId});
   final String? commentId;
 
-
   @override
-  State<CommentEntryPage> createState() => _CommentEntryPageState();
+  // ignore: library_private_types_in_public_api
+  _CommentEntryPageState createState() => _CommentEntryPageState();
 }
 
 class _CommentEntryPageState extends State<CommentEntryPage> {
-  // Membuat object form global key
   final _formKey = GlobalKey<FormState>();
-  final _dataMoment = {};
+  final Map<String, String> _dataComment = {};
 
-  // Membuat method untuk menyimpan data moment
   void _saveComment() {
     if (_formKey.currentState!.validate()) {
-      // Menyimpan data inputan pengguna ke map _dataMoment
       _formKey.currentState!.save();
-      // Membuat object moment baru
-
-      // Menutup halaman create moment
+      // Simpan data ke server/database atau state management.
       Navigator.of(context).pop();
     }
   }
@@ -34,7 +29,8 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Comment'),
+        title:
+            Text(widget.commentId == null ? 'Create Comment' : 'Edit Comment'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(largeSize),
@@ -53,71 +49,54 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                     hintText: 'Moment creator',
                     prefixIcon: const Icon(Icons.person),
                   ),
-                  keyboardType: TextInputType.name,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter moment creator';
+                      return 'Please enter creator name';
                     }
                     return null;
                   },
                   onSaved: (newValue) {
                     if (newValue != null) {
-                      _dataMoment['creator'] = newValue;
+                      _dataComment['creator'] = newValue;
                     }
                   },
                 ),
+                const SizedBox(height: mediumSize),
                 const Text('Comment'),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(0.0),
                     ),
-                    hintText: 'Comment description',
-                    prefixIcon: const Icon(Icons.note),
+                    hintText: 'Enter comment',
+                    prefixIcon: const Icon(Icons.comment),
                   ),
-                  keyboardType: TextInputType.multiline,
                   maxLines: 5,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter comment caption';
+                      return 'Please enter your comment';
                     }
                     return null;
                   },
                   onSaved: (newValue) {
                     if (newValue != null) {
-                      _dataMoment['caption'] = newValue;
+                      _dataComment['content'] = newValue;
                     }
                   },
                 ),
                 const SizedBox(height: largeSize),
-                SizedBox(
-                  height: 50.0,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryColor,
-                      foregroundColor: Colors.white,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero,
-                      ),
-                    ),
-                    onPressed: _saveComment,
-                    child: const Text('Save'),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: primaryColor,
+                    foregroundColor: Colors.white,
                   ),
+                  onPressed: _saveComment,
+                  child: const Text('Save'),
                 ),
                 const SizedBox(height: mediumSize),
-                SizedBox(
-                  height: 50.0,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero,
-                      ),
-                    ),
-                    child: const Text('Cancel'),
-                  ),
+                OutlinedButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Cancel'),
                 ),
               ],
             ),

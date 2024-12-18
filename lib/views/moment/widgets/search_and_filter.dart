@@ -44,6 +44,7 @@ class _SearchAndFilterState extends State<SearchAndFilter> {
             color: Colors.transparent,
           ),
         ),
+        // ignore: deprecated_member_use
         fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
         filled: true,
         prefixIcon: Container(

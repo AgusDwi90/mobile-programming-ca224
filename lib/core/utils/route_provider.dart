@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../views/comment/pages/comment_page.dart';
-import '../../views/comment/pages/commment_entry_page.dart';
-import '../../views/common/pages/main_page.dart';
-import '../../views/moment/pages/moment_entry_page.dart';
-import '../../views/moment/pages/moment_page.dart';
+import 'package:myapp/views/comment/pages/comment_entry_page.dart';
+import 'package:myapp/views/comment/pages/comment_page.dart';
+import 'package:myapp/views/common/pages/main_page.dart';
+import 'package:myapp/views/moment/pages/moment_entry_page.dart';
+import 'package:myapp/views/moment/pages/moment_page.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -21,7 +20,7 @@ class AppRouter {
         final momentId = settings.arguments as String?;
         return MaterialPageRoute(
             builder: (_) => CommentPage(momentId: momentId!));
-      case CommentEntryPage.routeName:
+      case CommentEntryPage.routeName: // Pastikan ini benar
         final commentId = settings.arguments as String?;
         return MaterialPageRoute(
             builder: (_) => CommentEntryPage(commentId: commentId));
