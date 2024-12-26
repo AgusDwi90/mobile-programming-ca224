@@ -1,32 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/comment.dart';
+import 'package:nanoid2/nanoid2.dart';
 
 import '../../../core/resources/dimensions.dart';
 import '../../../core/resources/colors.dart';
 
 class CommentEntryPage extends StatefulWidget {
   static const routeName = '/comment/entry';
-  const CommentEntryPage({super.key, this.commentId});
-  final String? commentId;
-
+  const CommentEntryPage({super.key, this.momentId, String? commentId});
+  final String? momentId;
 
   @override
   State<CommentEntryPage> createState() => _CommentEntryPageState();
 }
 
 class _CommentEntryPageState extends State<CommentEntryPage> {
-  // Membuat object form global key
   final _formKey = GlobalKey<FormState>();
-  final _dataMoment = {};
+  final _commentData = <String, String>{};
 
-  // Membuat method untuk menyimpan data moment
   void _saveComment() {
     if (_formKey.currentState!.validate()) {
-      // Menyimpan data inputan pengguna ke map _dataMoment
       _formKey.currentState!.save();
-      // Membuat object moment baru
 
-      // Menutup halaman create moment
-      Navigator.of(context).pop();
+      // Create a new Comment object
+      final newComment = Comment(
+        id: nanoid(),
+        creatorUsername: _commentData['creatorUsername'],
+        content: _commentData['content']!,
+        createdAt: DateTime.now(),
+        momentId: widget.momentId!,
+      );
+
+      // Pass the new comment back to the previous page
+      Navigator.of(context).pop(newComment);
     }
   }
 
@@ -50,42 +56,43 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(0.0),
                     ),
-                    hintText: 'Moment creator',
+                    hintText: 'Enter your username',
                     prefixIcon: const Icon(Icons.person),
                   ),
                   keyboardType: TextInputType.name,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter moment creator';
+                      return 'Please enter your username';
                     }
                     return null;
                   },
                   onSaved: (newValue) {
                     if (newValue != null) {
-                      _dataMoment['creator'] = newValue;
+                      _commentData['creatorUsername'] = newValue;
                     }
                   },
                 ),
+                const SizedBox(height: mediumSize),
                 const Text('Comment'),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(0.0),
                     ),
-                    hintText: 'Comment description',
+                    hintText: 'Enter your comment',
                     prefixIcon: const Icon(Icons.note),
                   ),
                   keyboardType: TextInputType.multiline,
                   maxLines: 5,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter comment caption';
+                      return 'Please enter a comment';
                     }
                     return null;
                   },
                   onSaved: (newValue) {
                     if (newValue != null) {
-                      _dataMoment['caption'] = newValue;
+                      _commentData['content'] = newValue;
                     }
                   },
                 ),

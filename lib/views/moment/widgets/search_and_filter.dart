@@ -66,3 +66,7 @@ class _SearchAndFilterState extends State<SearchAndFilter> {
     );
   }
 }
+
+extension on Color {
+  withValues({required double alpha}) {}
+}
