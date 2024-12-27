@@ -1,4 +1,4 @@
-# CA224_240040040_I Made Agus Dwi Maha Putra
+# 240040040_I Made Agus Dwi Maha Putra
 
 ## Tugas Pertemuan 13
 - Melanjutkan project contoh pada branch pertemuan12 untuk membuat Branch baru dengan nama tugas_pertemuan13.
@@ -11,3 +11,4 @@
 
 ## Screen Chapture
 ![Page1](https://github.com/user-attachments/assets/e2cf84b7-2fcc-4744-b0a3-abaea1b8fc41)
+![Page1x](https://github.com/user-attachments/assets/094b7a97-e2b8-4494-af8e-4859e77ba5a8)
