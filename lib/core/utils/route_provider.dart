@@ -33,14 +33,20 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const MomentPage());
       case MomentEntryPage.routeName:
         final momentId = settings.arguments as String?;
+        if (momentId == null) {
+          // Kembali ke MainPage jika momentId tidak ada
+          return MaterialPageRoute(builder: (_) => const MainPage());
+        }
         return MaterialPageRoute(
             builder: (_) => MomentEntryPage(momentId: momentId));
       case CommentPage.routeName:
-        final momentId = settings.arguments as String?;
-        return MaterialPageRoute(
-            builder: (_) => CommentPage(momentId: momentId!));
+        return MaterialPageRoute(builder: (_) => const CommentPage());
       case CommentEntryPage.routeName:
         final commentId = settings.arguments as String?;
+        if (commentId == null) {
+          // Kembali ke MainPage jika commentId tidak ada
+          return MaterialPageRoute(builder: (_) => const MainPage());
+        }
         return MaterialPageRoute(
             builder: (_) => CommentEntryPage(commentId: commentId));
       default:

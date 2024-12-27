@@ -1,19 +1,16 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/models/comment.dart';
-import 'package:myapp/repositories/api/api_comment_repository.dart';
-
+import 'package:myapp/repositories/contracts/abs_api_comment_repository.dart';
 import 'comment_event.dart';
 import 'comment_state.dart';
 
 class CommentBloc extends Bloc<CommentEvent, CommentState> {
-  final ApiCommentRepository commentRepository;
+  final AbsApiCommentRepository commentRepository;
   final String currentUser;
 
-  CommentBloc(this.commentRepository, this.currentUser)
-      : assert(commentRepository != null, 'commentRepository cannot be null'),
-        assert(currentUser.isNotEmpty, 'currentUser cannot be empty'),
-        super(CommentInitial()) {
+  CommentBloc({required this.commentRepository, required this.currentUser})
+      : super(CommentInitial()) {
     on<FetchComments>(_onFetchComments);
     on<FetchCommentsWithPagination>(_onFetchCommentsWithPagination);
     on<CreateComment>(_onCreateComment);
@@ -21,23 +18,21 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
     on<DeleteComment>(_onDeleteComment);
   }
 
-  Future<void> _onFetchComments(
-    FetchComments event,
-    Emitter<CommentState> emit,
-  ) async {
-    emit(CommentLoading());
-    try {
-      final comments = await commentRepository.getAll(event.momentId, event.keyword);
+  Future<void> _onFetchComments(FetchComments event, Emitter<CommentState> emit) async {
+  emit(CommentLoading());
+  try {
+    final comments = await commentRepository.getAll(event.momentId, event.keyword);
+    if (comments.isEmpty) {
+      emit(CommentEmpty()); // Jika respons kosong
+    } else {
       emit(CommentLoaded(comments));
-    } catch (e) {
-      emit(CommentError(e.toString()));
     }
+  } catch (e) {
+    emit(CommentError(e.toString()));
   }
+}
 
-  Future<void> _onFetchCommentsWithPagination(
-    FetchCommentsWithPagination event,
-    Emitter<CommentState> emit,
-  ) async {
+  Future<void> _onFetchCommentsWithPagination(FetchCommentsWithPagination event, Emitter<CommentState> emit) async {
     emit(CommentLoading());
     try {
       final comments = await commentRepository.getWithPagination(
@@ -52,10 +47,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
     }
   }
 
-  Future<void> _onCreateComment(
-    CreateComment event,
-    Emitter<CommentState> emit,
-  ) async {
+  Future<void> _onCreateComment(CreateComment event, Emitter<CommentState> emit) async {
     try {
       final newComment = event.newComment.copyWith(creatorUsername: currentUser);
       final createdComment = await commentRepository.create(event.momentId, newComment);
@@ -76,10 +68,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
     }
   }
 
-  Future<void> _onUpdateComment(
-    UpdateComment event,
-    Emitter<CommentState> emit,
-  ) async {
+  Future<void> _onUpdateComment(UpdateComment event, Emitter<CommentState> emit) async {
     try {
       final success = await commentRepository.update(event.momentId, event.updatedComment);
       if (success) {
@@ -98,10 +87,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
     }
   }
 
-  Future<void> _onDeleteComment(
-    DeleteComment event,
-    Emitter<CommentState> emit,
-  ) async {
+  Future<void> _onDeleteComment(DeleteComment event, Emitter<CommentState> emit) async {
     try {
       final success = await commentRepository.delete(event.momentId, event.commentId);
       if (success) {

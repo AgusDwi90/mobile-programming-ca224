@@ -16,7 +16,11 @@ class ApiCommentRepository extends AbsApiCommentRepository {
     _options = BaseOptions(
       baseUrl: _baseUri,
     );
-    _dio = Dio(_options);
+    _dio = Dio(_options)
+      ..options.validateStatus = (status) {
+        return status != null &&
+            (status >= 200 && status < 300 || status == 404);
+      };
     _dio.interceptors.add(DioInterceptor(_dio));
   }
 

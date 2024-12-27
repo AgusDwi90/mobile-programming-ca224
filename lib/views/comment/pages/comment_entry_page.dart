@@ -7,12 +7,21 @@ import '../../../core/resources/colors.dart';
 
 class CommentEntryPage extends StatefulWidget {
   static const routeName = '/comment/entry';
-  const CommentEntryPage({super.key, this.momentId, String? commentId});
+
+  const CommentEntryPage({
+    super.key,
+    this.momentId,
+    this.commentId,
+  });
+
   final String? momentId;
+  final String? commentId;
 
   @override
   State<CommentEntryPage> createState() => _CommentEntryPageState();
 }
+
+
 
 class _CommentEntryPageState extends State<CommentEntryPage> {
   final _formKey = GlobalKey<FormState>();
@@ -21,6 +30,14 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
   void _saveComment() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
+      // Ensure momentId is not null
+      if (widget.momentId == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Moment ID is missing.')),
+        );
+        return;
+      }
 
       // Create a new Comment object
       final newComment = Comment(
@@ -54,7 +71,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(0.0),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                     hintText: 'Enter your username',
                     prefixIcon: const Icon(Icons.person),
@@ -77,7 +94,7 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(0.0),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                     hintText: 'Enter your comment',
                     prefixIcon: const Icon(Icons.note),
@@ -103,8 +120,8 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: primaryColor,
                       foregroundColor: Colors.white,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                     onPressed: _saveComment,
@@ -119,8 +136,8 @@ class _CommentEntryPageState extends State<CommentEntryPage> {
                       Navigator.of(context).pop();
                     },
                     style: OutlinedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                     child: const Text('Cancel'),

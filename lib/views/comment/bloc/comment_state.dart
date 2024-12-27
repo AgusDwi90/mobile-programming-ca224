@@ -21,6 +21,11 @@ class CommentLoaded extends CommentState {
   List<Object?> get props => [comments];
 }
 
+class CommentEmpty extends CommentState {
+  @override
+  List<Object> get props => [];
+}
+
 class CommentPaginationLoaded extends CommentState {
   final List<Comment> comments;
   final bool hasReachedMax;
