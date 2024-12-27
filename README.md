@@ -1,16 +1,13 @@
-# myapp
+# CA224_240040040_I Made Agus Dwi Maha Putra
 
-A new Flutter project.
+## Tugas Pertemuan 13
+- Melanjutkan project contoh pada branch pertemuan12 untuk membuat Branch baru dengan nama tugas_pertemuan13.
+- Membuat implementasi kontrak dari repository AbsApiCommentRepository. 
+- Integrasi repository BLoC modul comment untuk mengelola data komentar setiap moment.
+- Lengkapi file readme.md dengan data identitas seperti nama dan NIM. Serta tampilkan tampilan aplikasi yang telah dibuat dalam bentuk gambar dalam file readme.md.
 
-## Getting Started
+## Fitur
+- Menambahkan Komentar
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screen Chapture
+![Page1](https://github.com/user-attachments/assets/e2cf84b7-2fcc-4744-b0a3-abaea1b8fc41)
